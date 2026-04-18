@@ -11,7 +11,9 @@ type Props = {
     | "outline"
     | "ghost"
     | "danger"
-    | "link";
+    | "link"
+    | "icon";
+
   size?: "sm" | "md" | "lg";
   className?: string;
   loading?: boolean;
@@ -38,12 +40,12 @@ export default function Button({
   const variants = {
     primary: "bg-primary text-white hover:bg-primary-800 disabled:bg-zinc-200",
     secondary: "bg-zinc-900 text-white hover:bg-zinc-800 disabled:bg-zinc-200",
-    third:
-      "p-2! bg-zinc-100 text-black hover:bg-zinc-200 disabled:bg-zinc-200 rounded-full!",
+    third: "bg-zinc-100/70 text-black hover:bg-zinc-200 disabled:bg-zinc-200 ",
     outline: "border border-zinc-300 text-zinc-900 hover:bg-zinc-100",
     ghost: "text-zinc-900 hover:bg-zinc-50 p-2!",
     danger: "bg-red-500 text-white hover:bg-red-600",
     link: "text-sm! underline font-medium! text-black! p-1! hover:font-semibold!",
+    icon: "p-2! bg-zinc-100/70 text-black hover:bg-zinc-200 disabled:bg-zinc-200 !rounded-full",
   };
 
   const sizes = {
