@@ -28,9 +28,6 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install Dependencies
-        run: npm install
-
       # 🔥 Set ENV based on branch
       - name: Set Environment
         id: env
@@ -53,10 +50,6 @@ jobs:
           elif [[ "${{ steps.env.outputs.ENV }}" == "production" ]]; then
             echo "${{ secrets.ENV_PROD }}" > .env
           fi
-
-      # 🔥 Build Vite
-      - name: Build App
-        run: npm run build
 
       # 🔥 Login GHCR
       - name: Login to GHCR
