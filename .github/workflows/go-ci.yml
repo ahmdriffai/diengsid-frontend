@@ -71,14 +71,18 @@ jobs:
         run: |
           if [[ "${{ steps.env.outputs.ENV }}" == "development" ]]; then
             API_URL=${{ secrets.VITE_API_URL_DEV }}
+            GOOGLE_CLIENT_ID=${{ secrets.VITE_GOOGLE_CLIENT_ID_DEV }}
           elif [[ "${{ steps.env.outputs.ENV }}" == "test" ]]; then
             API_URL=${{ secrets.VITE_API_URL_TEST }}
+            GOOGLE_CLIENT_ID=${{ secrets.VITE_GOOGLE_CLIENT_ID }}
           else
             API_URL=${{ secrets.VITE_API_URL_PROD }}
+            GOOGLE_CLIENT_ID=${{ secrets.VITE_GOOGLE_CLIENT_ID }}
           fi
 
           docker build \
             --build-arg VITE_API_URL=$API_URL \
+            --build-arg VITE_GOOGLE_CLIENT_ID=$GOOGLE_CLIENT_ID \
             -t ghcr.io/${{ github.repository }}:${{ steps.env.outputs.ENV }} \
             -t ghcr.io/${{ github.repository }}:${{ github.sha }} .
 

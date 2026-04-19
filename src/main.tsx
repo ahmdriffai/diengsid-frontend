@@ -9,10 +9,12 @@ import AppRouter from "./routes/routes";
 
 const queryClient = new QueryClient();
 
+const googleClientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
+
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
-      <GoogleOAuthProvider clientId="314501383101-t83bulhqb5ugib4s57t5hepheqt2rdgo.apps.googleusercontent.com">
+      <GoogleOAuthProvider clientId={googleClientId}>
         <Toaster position="top-center" />
         <AppRouter />
       </GoogleOAuthProvider>
